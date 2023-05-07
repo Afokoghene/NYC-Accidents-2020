@@ -1,6 +1,6 @@
 # NYC-Accidents-2020
 
-> [Introduction](https://github.com/Afokoghene/NYC-Accidents-2020/#introduction) <br
+> [Introduction](https://github.com/Afokoghene/NYC-Accidents-2020/#introduction) <br>
 > [Problem Statement](https://github.com/Afokoghene/NYC-Accidents-2020/#problem-statement) <br>
 > [Skills Demonstrated](https://github.com/Afokoghene/NYC-Accidents-2020/#skills-demonstrated) <br>
 > [Data Sourcing](https://github.com/Afokoghene/NYC-Accidents-2020/#data-sourcing) <br>
@@ -10,7 +10,7 @@
 > [Insights and Recommendations](https://github.com/Afokoghene/NYC-Accidents-2020/#insights_and_recommendations) <br>
 
 ## Introduction
-After the completion of a few tutorials, I tasked myself with a project to put all that I have learned into practice and allow myself to get better as I work on this project.
+After the completion of a few tutorials, I tasked myself with a project to put all that I have learnt into practice and allow myself to get better as I work on this project.
 
 Accidents occur almost every day and can occur anywhere. Data on past accidents can be analyzed and used to see trends of how accidents have occurred over time. With that known, preventive measures can be put in place regarding the factors causing these accidents.
 
@@ -52,9 +52,10 @@ Below are the meanings of the columns that were used in this analysis
 - Longitude: This is the geographical lattitude(point) of the accident location.
 - Contributing Factor Vehicle 1: This is the first / most signifacnt factor or cause of the reported accident.
 ### Transformation
-The dataset was duplicated to first make sure that changes alterations were not made to theone an donly original dataset, as the original can be of help for reference purpose. The first access of the dataset and the duplication was done using Microsoft Excel. I took out the spacing between words in in the column headers for easy reference when usng SQL. 
+The dataset was duplicated to first make sure that changes alterations were not made to the one and only original dataset, as the original can be of help for reference purposes. The first access of the dataset and the duplication was done using Microsoft Excel. I took out the spacing between words in the column headers for easy reference when usng SQL. 
 After all of that, I imported the data into the SQLPractice database on Micrsoft SQL server and ran checks on each column to make sure there were in useable and the right formats.
-I changed the converted the time column to useable format, created a new column for tiem and populated it with the converted one. The queries below was used for the purpose.
+
+I converted the time column to useable format, created a new column for time and populated it with the converted one. The queries below was used for the purpose.
 ```sql
 ALTER TABLE SQLPractice.dbo.NYCAccidents2020
 ADD TimeOfCrash Time(3);
@@ -70,7 +71,7 @@ ADD DateOfCrash Date;
 UPDATE SQLPractice.dbo.NYCAccidents2020
 SET DateOfCrash = CAST(CrashDate AS Date)
 ```
-I checked for the length of characters in the CollisionID column and noticed there were trailing and leading spaces and the dara type was also not in the right format so I changed the data type from float to integer and the spaces wrer trimmed automatically. The query below was used to this effect.
+I checked for the length of characters in the CollisionID column and noticed there were trailing and leading spaces and the data type was also not in the right format so I changed the data type from float to integer and the spaces were trimmed automatically. The query below was used to this effect.
 ```sql
 SELECT LEN(CollisionId)
 FROM SQLPractice.dbo.NYCAccidents2020
@@ -115,15 +116,15 @@ FROM SQLPractice.dbo.NYCAccidents2020
 GROUP BY DATENAME (weekday, DateOfCrash)
 ORDER BY COUNT (CollisionId) DESC
 ```
-| DayOfCrash | CollisionIdCount |
+| DayOfCrash   | CollisionIdCount |
 |------------------|-------------|
-|    Friday    |   12271  |
+|    Friday      |   12271   |
 |    Thursday    |   11244   |
-|    Wednesday    |   10638   |
-|    Tuesday    |   10613   |
+|    Wednesday   |   10638   |
+|    Tuesday     |   10613   |
 |    Saturday    |  10601    |
-|    Monday    |   10511   |
-|    Sunday    |   9003  |
+|    Monday      |   10511   |
+|    Sunday      |   9003    |
 
   The above query shows the days of the week and count of collision Id(as stated earlier, this is a unique ID for each accident and its count is used to represent the total of accidents) per day. This is simply how many accidents occured in each weekday for the period reported in the sample and it is seen that accidents occur the most on Fridays. 
 
@@ -138,11 +139,11 @@ ORDER BY CollisionIdCount DESC
 | HourOfCrash | CollisionIdCount |
 |------------------|-------------|
 |    16:00    |   5219  |
-|    14:00    |   5016   |
-|    17:00    |   4974   |
-|    18:00    |   4696   |
-|    15:00    |  4677    |
-|    13:00    |   4458   |
+|    14:00    |   5016  |
+|    17:00    |   4974  |
+|    18:00    |   4696  |
+|    15:00    |  4677   |
+|    13:00    |   4458  |
 |    12:00    |   4054  |
 |    11:00    |   3803  |
 |    19:00    |   3738  |
@@ -159,8 +160,8 @@ ORDER BY CollisionIdCount DESC
 |    01:00    |   1474  |
 |    05:00    |   1178  |
 |    02:00    |   1139  |
-|    03:00    |   989  |
-|    04:00    |   975  |
+|    03:00    |   989   |
+|    04:00    |   975   |
 
    The above query is used to pull the hour with the most accident occurence. The table shows hours of the day in one column and the total count of accidents on  the other column. Its result shows that accidents occurred the most in the hour of 16:00 PM. 
 
@@ -175,15 +176,15 @@ FROM SQLPractice.dbo.NYCAccidents2020
 GROUP BY OnStreetName
 ORDER BY OnStreetNamePercentage DESC
 ```
-| OnStreetName | OnStreetNamePercentage |
-|------------------|-------------|
-|    NULL    |   25.96  |
-|    BELT PARKWAY    |   1.66   |
-|    BROOKLYN QUEENS EXPRESSWAY    |   0.99   |
-|    LONG ISLAND EXPRESSWAY    |   0.99   |
-|    FDR DRIVE   |  0.97    |
-|    MAJOR DEEGAN EXPRESSWAY   |   0.79   |
-|    GRAND CENTRAL PARKWAY   |   0.78  |
+|            OnStreetName          |  OnStreetNamePercentage |
+|----------------------------------|-------------------------|
+|    NULL                          |   25.96                 |
+|    BELT PARKWAY                  |   1.66                  |
+|    BROOKLYN QUEENS EXPRESSWAY    |   0.99                  |
+|    LONG ISLAND EXPRESSWAY        |   0.99                  |
+|    FDR DRIVE                     |   0.97                  |
+|    MAJOR DEEGAN EXPRESSWAY       |   0.79                  |
+|    GRAND CENTRAL PARKWAY         |   0.78                  |
 
 - This query will select all excluding the streets recorded as **NULL** and also limit to the top 6
 ```sql
@@ -194,14 +195,14 @@ WHERE OnStreetName IS NOT NULL
 GROUP BY OnStreetName
 ORDER BY OnStreetNamePercentage DESC
 ```
-| OnStreetName | OnStreetNamePercentage |
-|------------------|-------------|
-|    BELT PARKWAY    |   2.25   |
-|    BROOKLYN QUEENS EXPRESSWAY    |   1.34  |
-|    LONG ISLAND EXPRESSWAY    |   1.33  |
-|    FDR DRIVE   |  1.31    |
-|    MAJOR DEEGAN EXPRESSWAY   |   1.07   |
-|    GRAND CENTRAL PARKWAY   |   1.05  |
+|            OnStreetName          |  OnStreetNamePercentage |
+|----------------------------------|-------------------------|
+|    BELT PARKWAY                  |   1.66                  |
+|    BROOKLYN QUEENS EXPRESSWAY    |   0.99                  |
+|    LONG ISLAND EXPRESSWAY        |   0.99                  |
+|    FDR DRIVE                     |   0.97                  |
+|    MAJOR DEEGAN EXPRESSWAY       |   0.79                  |
+|    GRAND CENTRAL PARKWAY         |   0.78                  |
 
 The above queries and tables shows that accidents occurred the most in Belt Parkway street during the period. 
 
