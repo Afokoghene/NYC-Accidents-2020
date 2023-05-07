@@ -7,6 +7,7 @@
 > [Data Assessment and Transformation](https://github.com/Afokoghene/NYC-Accidents-2020/#data-assessment-and-transformation) <br>
 > [Data Analysis](https://github.com/Afokoghene/NYC-Accidents-2020/#data-analysis) <br>
 > [Data Visualization](https://github.com/Afokoghene/NYC-Accidents-2020/#data-visualization) <br>
+> [Insights and Recommendations](https://github.com/Afokoghene/NYC-Accidents-2020/#insights_and_recommendations) <br>
 
 ## Introduction
 After the completion of a few tutorials, I tasked myself with a project to put all that I have learned into practice and allow myself to get better as I work on this project.
@@ -250,6 +251,31 @@ ORDER BY CountCollisionId DESC
 ---
 
 ## Data Visualization
+
+This data visualization was created using Tableau desktop, each visual in it is created to display information matching each question in the problem statement.
+
+![Image](NYC_Accidents_Dashboard.png)
+
+Check out the live dashboard [here](https://public.tableau.com/app/profile/afokoghene.osiobe.arierhi/viz/NYCAccidents2020-N/NewYorkCityAccidentsJanuarytoAugust2020?publish=yes) <br>
+
+---
+
+## Insights and Recommendations
+### Insights
+
+
+
+
+
+
+
+
+
+
+### Recommendations
+
+
+
 
 
 
