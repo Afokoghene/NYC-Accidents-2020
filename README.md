@@ -34,7 +34,7 @@ The problem is foused around how accidents occurred over the months reported, ac
 ---
 
 ## Data Sourcing
-The dataset was obtained from [Maven Analytics' website](https://www.mavenanalytics.io/data-playground?accessType=open&dataStructure=5wfxyeVf1etbP4TXdyPdG1&page=2&pageSize=5) <br> where datasets are generally available for practice purposes.
+The dataset was obtained from [Maven Analytics' website](https://www.mavenanalytics.io/data-playground?accessType=open&dataStructure=5wfxyeVf1etbP4TXdyPdG1&page=2&pageSize=5) where datasets are generally available for practice purposes.
 
 ---
 
@@ -251,36 +251,72 @@ ORDER BY CountCollisionId DESC
 
 ---
 
+5. What borough had the highest accident occurrence reported during the period?
+
+```sql
+SELECT Borough, COUNT(CollisionId) CountOfCollisionId
+FROM SQLPractice.dbo.NYCAccidents2020
+WHERE Borough IS NOT NULL
+GROUP BY Borough
+ORDER BY CountOfCollisionId DESC
+```
+|            Borough          |  CountOfCollisionId |
+|----------------------------------|-------------------------|
+|    BROOKLYN                  |   16907                  |
+|    QUEENS    |   14017                 |
+|    BRONX       |   9417                  |
+|    MANHATTAN                     |  7353                 |
+|    STATEN ISLAND      |   1446                  |
+
+The above table shows the Boroughs in New York City and the total accidents(this is measured by the count of collision IDs) recorded to have occurred in them during the period.
+
+---
+
 ## Data Visualization
 
 This data visualization was created using Tableau desktop, each visual in it is created to display information matching each question in the problem statement.
 
 ![Image](NYC_Accidents_Dashboard.png)
 
-Check out the live dashboard [here](https://public.tableau.com/app/profile/afokoghene.osiobe.arierhi/viz/NYCAccidents2020-N/NewYorkCityAccidentsJanuarytoAugust2020?publish=yes) <br>
+Check out the live dashboard [here](https://public.tableau.com/app/profile/afokoghene.osiobe.arierhi/viz/NYCAccidents2020-N/NewYorkCityAccidentsJanuarytoAugust2020?publish=yes)
 
 ---
 
 ## Insights and Recommendations
 ### Insights
 
+1. From the percentage(%) of total analysis, it was compared by month and discovered that accidents occurred the most in January as it had the highest percentage of approximately 19.08%, this was followed by February with 18.27% and March with 14.77%. April had a dramatic drop in the occurrence of accidents recording a 5.50% of the total reported accidents but that also began to rise slowly till July which had 12.32% but this dropped again in August by 0.64% as August had 11.68% of accidents that occurred in the period.
+- Explanation: It appears that there is a seasonal pattern in the occurrence of accidents. This could potentially be attributed to a variety of factors, such as weather conditions, traffic patterns, and holidays or events that occur during those months. While it's true that seasonal factors could play a role in the occurrence of accidents, the data provided doesn't provide clear evidence of this, the major causing factor of accidents during the period was Driver Inattention / Distraction
 
+2. Based on the results, it is discovered that the day accidents occur the most is Friday with a total of 12,271 accidents reported, while the time is 16:00 PM(4pm) with a total of 5,219 accidents reported to have occurred in the hour. The second day with high occurrences is Thursday. 
+- It could be said that accidents occur the most on Fridays(and Thursdays) and in the hour of 16:00 PM is mainly because it is the weekend and people are in such a hurry to get home and cool off from the week-long stress while others may be rushing to complete tasks before the weekend or may be mentally checked out after a long work week.
 
+3. The street where most accidents were reported is Belt Parkway with a total of 1,245 accidents reported to have occurred there in the period of January to August   2020.
+The accidents reported to have occurred on Belt Parkway represents 1.66% of the total accidents reported in New York City within the period. With the NULL values excluded, Belt Parkway represents 2.25% of the total accidents reported.
+- Streets that were not recorded and returned as ‘NULL’ had 19,437 accidents reported to have occurred on them, which represents approximately 25.96% of all reported accidents. This, although, is NULL, so cannot be said to be a street name.
 
-
-
-
-
-
+4. Based on contributing factors to accidents(Contributing Factor Vehicle 1), the most contributing factor or major cause of accidents reported in this sample is ‘Unspecified’(it is possible that the cause of the accidents were not recorded at the time of reporting) with a total count of 19,471 which accounts for approximately 26% of the total accidents reported. The second most contributing factor to occurrence of accidents reported is Driver Inattention/Distraction with a total count of 19,123 and takes up 25.54% of the total accidents reported in this sample.
+- Specifically for fatal accidents(accidents that had deaths recorded), it is discovered that Unsafe Speed is the most contributing factor as it has has a total count of 33 and a total number of persons killed being 39
+From this last analysis, it is seen that overspeeding took the lives of 39 people in a period of eight(8) months only in New York City, hopefully we can avoid overspeeding and save lives. It is better to get to that meeting late than to take a life or end one’s life due to overspeeding.
 
 ### Recommendations
 
+1. Awareness on driver distractions and the dangers should be increased: Given that driver inattention/distraction is the major cause of accidents, it is essential to create awareness campaigns that educate drivers on the dangers of distracted driving and how to avoid it.
 
+2. Enforcement of speed limits: Since unsafe speed is the major cause of fatal accidents, it is important to enforce speed limits, monitor speed practices on the road, and ensure that drivers comply with traffic laws.
 
+3. Improve road infrastructure and maintenance: Poor road conditions and inadequate road signs can contribute to accidents. Therefore, it is important to improve road infrastructure and ensure that roads are well-maintained, have proper signage, and are easy to navigate.
 
+4. Increase law enforcement presence on the road: To ensure that drivers comply with traffic laws, it is important to increase law enforcement presence on the road. This will serve as a deterrent to reckless driving practices and promote safer driving habits.
 
+**NOTE**: Efforts on all of these should be doubled on Belt Parkway(street with the most accident occurrence during the period) and also in Brooklyn and Queens borough as they had the highest accidents reported during the period.
 
+---
 
+Big THANKS if you did read till this spot, I appreaciate the time taken out to go through the project. I know it was almost overwhelming, I was trying to be as detailed as possible. 
+To connect with me, follow me on [Twitter](https://twitter.com/__afoke?t=_YX2DAel3R3aWZGDvSEZ9w&s=09), LinkedIn will be coming soon.
+
+Bye for now!
 
 
 
